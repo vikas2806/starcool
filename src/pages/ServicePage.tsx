@@ -45,9 +45,14 @@ const ctaImages: Record<string, string> = {
   'refrigerator-repair': ctaFridge,
 };
 
-export default function ServicePage() {
+interface ServicePageProps {
+  slugOverride?: string;
+}
+
+export default function ServicePage({ slugOverride }: ServicePageProps = {}) {
   const { slug } = useParams<{ slug: string }>();
-  const service = getServiceBySlug(slug ?? '');
+  const activeSlug = slugOverride || slug || '';
+  const service = getServiceBySlug(activeSlug);
 
   if (!service) return <Navigate to="/404" replace />;
 
