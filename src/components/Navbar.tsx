@@ -98,9 +98,6 @@ export default function Navbar() {
           <NavLink to="/about" className={navLinkClass}>
             About Us
           </NavLink>
-          <NavLink to="/reviews" className={navLinkClass}>
-            Reviews
-          </NavLink>
           <NavLink to="/contact" className={navLinkClass}>
             Contact
           </NavLink>
@@ -156,9 +153,6 @@ export default function Navbar() {
             </div>
             <NavLink to="/about" className={navLinkClass}>
               About Us
-            </NavLink>
-            <NavLink to="/reviews" className={navLinkClass}>
-              Reviews
             </NavLink>
             <NavLink to="/contact" className={navLinkClass}>
               Contact

@@ -11,7 +11,7 @@ export default function About() {
     <>
       <SEOHead
         title={`About Us | ${SITE_NAME}`}
-        description="Learn about Star Cool Appliance Repairs — your trusted local appliance repair specialists in Mumbai. Experienced technicians, honest pricing, and fast doorstep service."
+        description="Learn about Star Cool Appliance Repairs — your local appliance repair specialists in Mumbai. Experienced technicians, honest pricing, and fast doorstep service."
         canonical="/about"
       />
       <Navbar />
@@ -30,7 +30,7 @@ export default function About() {
               About <span style={{ color: '#F97316' }}>Star Cool</span>
             </h1>
             <p className="text-white/80 text-lg">
-              Your trusted appliance repair specialists in Mumbai — fast, affordable, and reliable.
+              Professional appliance repair specialists in Mumbai — fast, affordable, and reliable.
             </p>
           </div>
         </section>

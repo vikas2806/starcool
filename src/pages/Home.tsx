@@ -21,7 +21,7 @@ const homeJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: SITE_NAME,
-  telephone: '+9199300 89870',
+  telephone: PHONE_TEL,
   areaServed: 'Mumbai',
   url: SITE_URL,
   description: 'Fast, reliable and affordable appliance repair services at your doorstep in Mumbai.',
@@ -34,6 +34,13 @@ const homeJsonLd = {
     })),
   },
 };
+
+const steps = [
+  { step: '1', label: 'Call or\nWhatsApp Us' },
+  { step: '2', label: 'Discuss the\nIssue' },
+  { step: '3', label: 'Technician\nVisits' },
+  { step: '4', label: 'Repair &\nDone' },
+];
 
 export default function Home() {
   return (
@@ -53,12 +60,6 @@ export default function Home() {
           aria-label="Welcome to Star Cool"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-            <div
-              className="inline-flex items-center gap-2 text-white text-sm font-medium px-4 py-2 rounded-full mb-6"
-              style={{ backgroundColor: 'rgba(249,115,22,0.15)', border: '1px solid rgba(249,115,22,0.3)' }}
-            >
-              ★ Trusted Appliance Repair in Mumbai
-            </div>
             <h1 className="text-3xl sm:text-5xl font-bold text-white mb-4 leading-tight">
               Professional Appliance Repair<br />
               <span style={{ color: '#F97316' }}>at Your Doorstep</span>
@@ -125,7 +126,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Process (generic) */}
+        {/* Process (How It Works) */}
         <section
           className="py-14 mx-4 my-8 lg:mx-8 rounded-3xl"
           style={{ backgroundColor: '#0B1F3F' }}
@@ -136,28 +137,98 @@ export default function Home() {
               How It Works
             </h2>
             <div className="w-14 h-1 rounded-full mx-auto mb-10" style={{ backgroundColor: '#F97316' }} />
-            <div className="flex flex-wrap justify-center items-center gap-6">
-              {[
-                { step: '1', label: 'Call or WhatsApp Us' },
-                { step: '2', label: 'Discuss the Issue' },
-                { step: '3', label: 'Technician Visits' },
-                { step: '4', label: 'Repair & Done' },
-              ].map((item, i, arr) => (
-                <div key={item.step} className="flex items-center gap-4">
-                  <div className="flex flex-col items-center gap-2">
+
+            {/* Desktop Layout: 4 steps in a clean single row */}
+            <div className="hidden md:flex items-start justify-center gap-3 lg:gap-6 max-w-4xl mx-auto">
+              {steps.map((item, i) => (
+                <div key={item.step} className="flex items-center gap-3 lg:gap-6 flex-1">
+                  <div className="flex flex-col items-center text-center w-full">
                     <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-bold text-xl"
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-md mb-3"
                       style={{ backgroundColor: '#F97316' }}
                     >
                       {item.step}
                     </div>
-                    <span className="text-white text-xs font-medium text-center max-w-[80px]">{item.label}</span>
+                    <span className="text-white text-xs lg:text-sm font-medium leading-tight whitespace-pre-line">
+                      {item.label}
+                    </span>
                   </div>
-                  {i < arr.length - 1 && (
-                    <span className="text-2xl font-bold" style={{ color: '#F97316' }}>→</span>
+                  {i < steps.length - 1 && (
+                    <span className="text-2xl font-bold flex-shrink-0 -mt-6" style={{ color: '#F97316' }}>
+                      →
+                    </span>
                   )}
                 </div>
               ))}
+            </div>
+
+            {/* Mobile Layout: Perfectly aligned 2x2 grid with center arrows */}
+            <div className="md:hidden flex flex-col gap-8 max-w-xs mx-auto">
+              {/* Row 1: Step 1 -> Step 2 */}
+              <div className="flex items-start justify-between">
+                <div className="flex flex-col items-center text-center w-28">
+                  <div
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-md mb-2"
+                    style={{ backgroundColor: '#F97316' }}
+                  >
+                    1
+                  </div>
+                  <span className="text-white text-xs font-medium leading-tight whitespace-pre-line">
+                    {steps[0].label}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-center h-16 flex-1">
+                  <span className="text-2xl font-bold" style={{ color: '#F97316' }}>
+                    →
+                  </span>
+                </div>
+
+                <div className="flex flex-col items-center text-center w-28">
+                  <div
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-md mb-2"
+                    style={{ backgroundColor: '#F97316' }}
+                  >
+                    2
+                  </div>
+                  <span className="text-white text-xs font-medium leading-tight whitespace-pre-line">
+                    {steps[1].label}
+                  </span>
+                </div>
+              </div>
+
+              {/* Row 2: Step 3 -> Step 4 */}
+              <div className="flex items-start justify-between">
+                <div className="flex flex-col items-center text-center w-28">
+                  <div
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-md mb-2"
+                    style={{ backgroundColor: '#F97316' }}
+                  >
+                    3
+                  </div>
+                  <span className="text-white text-xs font-medium leading-tight whitespace-pre-line">
+                    {steps[2].label}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-center h-16 flex-1">
+                  <span className="text-2xl font-bold" style={{ color: '#F97316' }}>
+                    →
+                  </span>
+                </div>
+
+                <div className="flex flex-col items-center text-center w-28">
+                  <div
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-md mb-2"
+                    style={{ backgroundColor: '#F97316' }}
+                  >
+                    4
+                  </div>
+                  <span className="text-white text-xs font-medium leading-tight whitespace-pre-line">
+                    {steps[3].label}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -186,7 +257,7 @@ export default function Home() {
       </main>
       <Footer />
       <WhatsAppButton message={WHATSAPP_MESSAGES.generic} variant="floating" />
-      <MobileStickyBar />
+      <MobileStickyBar whatsappMessage={WHATSAPP_MESSAGES.generic} />
     </>
   );
 }

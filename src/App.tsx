@@ -8,7 +8,6 @@ import NotFound from './pages/NotFound';
 
 // Route-based code splitting
 const About = lazy(() => import('./pages/About'));
-const Reviews = lazy(() => import('./pages/Reviews'));
 const Contact = lazy(() => import('./pages/Contact'));
 const ServicePage = lazy(() => import('./pages/ServicePage'));
 
@@ -28,9 +27,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/reviews" element={<Reviews />} />
             <Route path="/contact" element={<Contact />} />
-            {/* Specific Service routes as requested */}
+            {/* Specific Service routes */}
             <Route path="/ac-repair" element={<ServicePage slugOverride="ac-repair" />} />
             <Route path="/microwave-repair" element={<ServicePage slugOverride="microwave-repair" />} />
             <Route path="/washing-machine-repair" element={<ServicePage slugOverride="washing-machine-repair" />} />

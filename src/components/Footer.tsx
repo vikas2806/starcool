@@ -30,7 +30,6 @@ export default function Footer() {
                 { to: '/washing-machine-repair', label: 'Washing Machine Repair' },
                 { to: '/refrigerator-repair', label: 'Refrigerator Repair' },
                 { to: '/about', label: 'About Us' },
-                { to: '/reviews', label: 'Reviews' },
                 { to: '/contact', label: 'Contact' },
               ].map((link) => (
                 <li key={link.to}>

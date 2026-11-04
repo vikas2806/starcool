@@ -30,9 +30,9 @@ All contact details are centralized in a single file:
 👉 [`src/config/contact.ts`](./src/config/contact.ts)
 
 ```typescript
-export const PHONE_DISPLAY = '+91 77388 07317';
-export const WHATSAPP_NUMBER = '917738807317'; // Country code + digits, no plus or spaces
-export const PHONE_TEL = '+917738807317';
+export const PHONE_DISPLAY = '+91 99300 89870';
+export const WHATSAPP_NUMBER = '919930089870'; // Country code + digits, no plus or spaces
+export const PHONE_TEL = '+919930089870';
 export const SITE_URL = 'https://starcool.example'; // Update with purchased domain
 ```
 

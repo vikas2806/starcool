@@ -1,6 +1,6 @@
 import { useParams, Navigate } from 'react-router-dom';
 import { getServiceBySlug } from '../data/services';
-import { SITE_URL, SITE_NAME } from '../config/contact';
+import { SITE_URL, SITE_NAME, PHONE_TEL } from '../config/contact';
 import SEOHead from '../components/SEOHead';
 import Navbar from '../components/Navbar';
 import HeroBanner from '../components/HeroBanner';
@@ -60,7 +60,7 @@ export default function ServicePage({ slugOverride }: ServicePageProps = {}) {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: SITE_NAME,
-    telephone: '+917738807317',
+    telephone: PHONE_TEL,
     areaServed: 'Mumbai',
     url: `${SITE_URL}/${service.slug}`,
     description: service.seoDescription,
