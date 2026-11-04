@@ -1,8 +1,8 @@
 /** Single source of truth for all contact information */
 
-export const PHONE_DISPLAY = '+91 77388 07317';
-export const WHATSAPP_NUMBER = '917738807317'; // country code, no +, no spaces
-export const PHONE_TEL = '+917738807317';
+export const PHONE_DISPLAY = '+91 99300 89870';
+export const WHATSAPP_NUMBER = '9199300 89870'; // country code, no +, no spaces
+export const PHONE_TEL = '+91 9300 89870';
 export const SITE_URL = 'https://starcool.example'; // Replace with real domain once purchased
 export const SITE_NAME = 'Star Cool Appliance Repairs';
 export const OG_SITE_NAME = 'Star Cool Appliance Repairs';

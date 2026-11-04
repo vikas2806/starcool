@@ -21,7 +21,7 @@ const homeJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: SITE_NAME,
-  telephone: '+917738807317',
+  telephone: '+9199300 89870',
   areaServed: 'Mumbai',
   url: SITE_URL,
   description: 'Fast, reliable and affordable appliance repair services at your doorstep in Mumbai.',

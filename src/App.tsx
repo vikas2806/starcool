@@ -23,7 +23,7 @@ function Loading() {
 export default function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -45,4 +45,3 @@ export default function App() {
     </HelmetProvider>
   );
 }
-
