@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, Wind, Microwave, WashingMachine, Refrigerator } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import Navbar from '../components/Navbar';
 import TrustStrip from '../components/TrustStrip';
@@ -9,7 +10,7 @@ import MobileStickyBar from '../components/MobileStickyBar';
 import { PHONE_DISPLAY, PHONE_TEL, SITE_URL, SITE_NAME, WHATSAPP_MESSAGES } from '../config/contact';
 import { services } from '../data/services';
 
-const serviceIcons: Record<string, React.ComponentType<{ size?: number; style?: React.CSSProperties }>> = {
+const serviceIcons: Record<string, LucideIcon> = {
   'ac-repair': Wind,
   'microwave-repair': Microwave,
   'washing-machine-repair': WashingMachine,
