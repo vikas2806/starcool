@@ -8,6 +8,9 @@ interface CommonProblemsProps {
 }
 
 export default function CommonProblems({ serviceTitle, problems, imageSrc, imageAlt }: CommonProblemsProps) {
+  // Strip trailing "Repair" or "Service" so we get "Common AC Problems We Fix"
+  const applianceName = serviceTitle.replace(/\s*(repair|service|&).*$/i, '').trim();
+
   return (
     <section className="bg-white py-12 lg:py-16" aria-labelledby="problems-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,7 +34,7 @@ export default function CommonProblems({ serviceTitle, problems, imageSrc, image
               className="text-2xl lg:text-3xl font-bold mb-2 leading-tight"
               style={{ color: '#0B1F3F' }}
             >
-              Common {serviceTitle} Problems We Fix
+              Common {applianceName} Problems We Fix
             </h2>
             {/* Orange underline accent */}
             <div className="w-16 h-1 rounded-full mb-6" style={{ backgroundColor: '#F97316' }} />

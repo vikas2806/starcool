@@ -12,6 +12,9 @@ interface ProcessStepsProps {
 }
 
 export default function ProcessSteps({ serviceTitle }: ProcessStepsProps) {
+  // Strip trailing "Repair" or "Service" so we never get "AC Repair Repair Process"
+  const applianceName = serviceTitle.replace(/\s*(repair|service|&).*$/i, '').trim();
+
   return (
     <section
       className="py-12 lg:py-16 rounded-3xl mx-4 my-8 lg:mx-8"
@@ -24,7 +27,7 @@ export default function ProcessSteps({ serviceTitle }: ProcessStepsProps) {
             id="process-heading"
             className="text-2xl lg:text-3xl font-bold italic text-white mb-2"
           >
-            Our {serviceTitle} Repair Process
+            Our {applianceName} Repair Process
           </h2>
           <div className="w-16 h-1 rounded-full mx-auto" style={{ backgroundColor: '#F97316' }} />
         </div>

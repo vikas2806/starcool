@@ -11,6 +11,9 @@ interface CtaBannerProps {
 }
 
 export default function CtaBanner({ serviceTitle, ctaSubtext, whatsappMessage, ctaImageSrc, ctaImageAlt }: CtaBannerProps) {
+  // Strip trailing "Repair" or "Service" so we never get "Need AC Repair Repair in Mumbai?"
+  const applianceName = serviceTitle.replace(/\s*(repair|service|&).*$/i, '').trim();
+
   return (
     <section className="mx-4 my-8 lg:mx-8 rounded-2xl overflow-hidden bg-gray-100 shadow" aria-label="Call to action">
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
@@ -29,7 +32,7 @@ export default function CtaBanner({ serviceTitle, ctaSubtext, whatsappMessage, c
         {/* Text */}
         <div className="p-8 lg:p-10">
           <h2 className="text-2xl lg:text-3xl font-bold mb-2 leading-tight" style={{ color: '#0B1F3F' }}>
-            Need {serviceTitle} Repair in Mumbai?
+            Need {applianceName} Repair in Mumbai?
           </h2>
           <p className="text-gray-600 mb-6">{ctaSubtext}</p>
           <div className="flex flex-wrap gap-3">

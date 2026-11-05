@@ -1,5 +1,5 @@
 import { Phone, MessageCircle } from 'lucide-react';
-import { PHONE_TEL, buildWhatsAppUrl, WHATSAPP_MESSAGES } from '../config/contact';
+import { PHONE_TEL, PHONE_DISPLAY, buildWhatsAppUrl, WHATSAPP_MESSAGES } from '../config/contact';
 
 interface MobileStickyBarProps {
   whatsappMessage?: string;
@@ -7,24 +7,24 @@ interface MobileStickyBarProps {
 
 export default function MobileStickyBar({ whatsappMessage = WHATSAPP_MESSAGES.generic }: MobileStickyBarProps) {
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 flex border-t border-gray-200 bg-white shadow-lg">
+    <div className="lg:hidden fixed bottom-3 left-3 right-3 z-40 flex items-center gap-2">
       <a
         href={`tel:${PHONE_TEL}`}
-        className="flex-1 flex flex-col items-center justify-center gap-1 py-3 text-white font-semibold text-sm min-h-[56px] active:opacity-90"
+        className="flex-1 flex items-center justify-center gap-2 py-3 px-2 rounded-full text-white font-bold text-xs shadow-xl transition-transform active:scale-95 min-h-[46px]"
         style={{ backgroundColor: '#F97316' }}
       >
-        <Phone size={20} />
-        <span className="text-xs">Call Now</span>
+        <Phone size={16} />
+        <span>Call Now {PHONE_DISPLAY}</span>
       </a>
       <a
         href={buildWhatsAppUrl(whatsappMessage)}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-1 flex flex-col items-center justify-center gap-1 py-3 text-white font-semibold text-sm min-h-[56px] active:opacity-90"
+        className="flex-1 flex items-center justify-center gap-2 py-3 px-2 rounded-full text-white font-bold text-xs shadow-xl transition-transform active:scale-95 min-h-[46px]"
         style={{ backgroundColor: '#25D366' }}
       >
-        <MessageCircle size={20} />
-        <span className="text-xs">WhatsApp</span>
+        <MessageCircle size={16} fill="white" color="white" />
+        <span>WhatsApp Us</span>
       </a>
     </div>
   );

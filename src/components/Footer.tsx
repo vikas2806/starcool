@@ -3,10 +3,20 @@ import { Phone, MapPin } from 'lucide-react';
 import Logo from './Logo';
 import { PHONE_DISPLAY, PHONE_TEL, SITE_NAME } from '../config/contact';
 
+const quickLinks = [
+  { to: '/', label: 'Home' },
+  { to: '/ac-repair', label: 'AC Repair' },
+  { to: '/microwave-repair', label: 'Microwave Repair' },
+  { to: '/washing-machine-repair', label: 'Washing Machine Repair' },
+  { to: '/refrigerator-repair', label: 'Refrigerator Repair' },
+  { to: '/about', label: 'About Us' },
+  { to: '/contact', label: 'Contact' },
+];
+
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="text-white mt-8" style={{ backgroundColor: '#0B1F3F' }} role="contentinfo">
+    <footer className="text-white mt-12" style={{ backgroundColor: '#0B1F3F' }} role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
@@ -22,20 +32,13 @@ export default function Footer() {
             <h3 className="text-sm font-bold uppercase tracking-widest mb-4" style={{ color: '#F97316' }}>
               Quick Links
             </h3>
-            <ul className="space-y-2">
-              {[
-                { to: '/', label: 'Home' },
-                { to: '/ac-repair', label: 'AC Repair' },
-                { to: '/microwave-repair', label: 'Microwave Repair' },
-                { to: '/washing-machine-repair', label: 'Washing Machine Repair' },
-                { to: '/refrigerator-repair', label: 'Refrigerator Repair' },
-                { to: '/about', label: 'About Us' },
-                { to: '/contact', label: 'Contact' },
-              ].map((link) => (
+            <ul className="space-y-2.5">
+              {quickLinks.map((link) => (
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-white/70 hover:text-white text-sm transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-orange-400"
+                    onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' })}
+                    className="text-white/70 hover:text-white text-sm transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-orange-400 block py-0.5"
                   >
                     {link.label}
                   </Link>
