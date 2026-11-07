@@ -5,11 +5,12 @@ import { PHONE_DISPLAY, PHONE_TEL, SITE_NAME } from '../config/contact';
 
 const quickLinks = [
   { to: '/', label: 'Home' },
-  { to: '/ac-repair', label: 'AC Repair' },
-  { to: '/microwave-repair', label: 'Microwave Repair' },
-  { to: '/washing-machine-repair', label: 'Washing Machine Repair' },
-  { to: '/refrigerator-repair', label: 'Refrigerator Repair' },
+  { to: '/ac-repair-mumbai', label: 'AC Repair' },
+  { to: '/microwave-repair-mumbai', label: 'Microwave Repair' },
+  { to: '/washing-machine-repair-mumbai', label: 'Washing Machine Repair' },
+  { to: '/refrigerator-repair-mumbai', label: 'Refrigerator Repair' },
   { to: '/about', label: 'About Us' },
+  { to: '/reviews', label: 'Reviews' },
   { to: '/contact', label: 'Contact' },
 ];
 

@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom';
+import SEOHead from '../components/SEOHead';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function NotFound() {
   return (
     <>
+      <SEOHead
+        title="Page Not Found | Star Cool Appliance Repairs Mumbai"
+        description="The page you requested was not found. Star Cool provides fast doorstep appliance repair for ACs, fridges, washing machines, and microwaves in Mumbai."
+        canonical="/404"
+      />
       <Navbar />
       <main className="pt-20 min-h-[70vh] flex items-center justify-center bg-gray-50">
         <div className="text-center px-6">

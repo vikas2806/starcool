@@ -21,71 +21,62 @@ export default function HeroBanner({
 }: HeroBannerProps) {
   return (
     <section
-      className="relative overflow-hidden pt-20"
-      style={{ backgroundColor: '#0B1F3F', minHeight: '420px' }}
+      className="relative overflow-hidden pt-20 sm:pt-24 pb-10 sm:pb-14 bg-[#0B1F3F]"
       aria-label="Hero section"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 min-h-[400px] lg:min-h-[420px]">
-          {/* Left: text */}
-          <div className="py-10 lg:py-14 z-10 relative">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full mb-5">
-              <CheckCircle2 size={16} style={{ color: '#F97316' }} />
-              {badgeText}
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-              {heading}
-            </h1>
-            <p className="text-white/80 text-base mb-6 max-w-sm">{subtitle}</p>
-
-            {/* Buttons with generous bottom gap */}
-            <div className="flex flex-wrap gap-3 pb-8">
-              <a
-                href={`tel:${PHONE_TEL}`}
-                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full text-sm transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px]"
-                style={{ backgroundColor: '#F97316' }}
-              >
-                <Phone size={18} />
-                Call Now {PHONE_DISPLAY}
-              </a>
-              <WhatsAppButton message={whatsappMessage} variant="outline" />
-            </div>
-          </div>
-
-          {/* Right: image with orange accent */}
-          <div className="relative hidden lg:flex items-end justify-center h-full">
-            <div
-              className="absolute left-0 top-0 bottom-0 w-20 z-10"
-              style={{
-                background: 'radial-gradient(ellipse at left, #F97316 0%, transparent 70%)',
-                opacity: 0.6,
-              }}
-            />
-            <img
-              src={heroImageSrc}
-              alt={heroImageAlt}
-              className="relative z-0 h-full max-h-[420px] w-full object-cover object-top rounded-bl-3xl"
-              width="560"
-              height="420"
-              fetchPriority="high"
-              decoding="async"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile hero image (below text) */}
-      <div className="lg:hidden w-full h-56 sm:h-64 mt-0 border-t border-white/10">
+      {/* Full-Height Right Technician Image (Seamless, spans whole height of blue section) */}
+      <div className="absolute right-0 top-0 bottom-0 w-[55%] sm:w-[50%] lg:w-[48%] pointer-events-none overflow-hidden flex items-stretch justify-end">
+        {/* Soft left gradient fade into #0B1F3F */}
+        <div
+          className="absolute inset-y-0 left-0 w-16 sm:w-28 z-10 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to right, #0B1F3F 0%, transparent 100%)',
+          }}
+        />
         <img
           src={heroImageSrc}
           alt={heroImageAlt}
-          className="w-full h-full object-cover object-top"
-          width="400"
-          height="224"
+          className="w-full h-full object-cover object-left-top"
           loading="eager"
+          width="1200"
+          height="815"
         />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Left: text */}
+        <div className="w-[58%] sm:w-[52%] lg:w-[52%] py-3 sm:py-6">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-[11px] sm:text-xs font-medium px-3 py-1 rounded-full mb-2 sm:mb-3">
+            <CheckCircle2 size={14} style={{ color: '#F97316' }} />
+            <span>{badgeText}</span>
+          </div>
+
+          <h1 className="text-xl xs:text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-2 sm:mb-3">
+            {heading}
+          </h1>
+          <p className="text-white/80 text-xs sm:text-sm font-normal max-w-sm mb-3 leading-relaxed">
+            {subtitle}
+          </p>
+        </div>
+
+        {/* Buttons row with solid green WhatsApp */}
+        <div className="flex flex-row items-center gap-3 pt-2 pb-2 max-w-lg sm:max-w-xl">
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="flex-1 flex items-center justify-center gap-2 text-white font-bold py-3 px-3 rounded-full text-xs sm:text-sm transition-transform active:scale-95 shadow-lg min-h-[46px]"
+            style={{ backgroundColor: '#F97316' }}
+          >
+            <Phone size={16} />
+            <span>Call Now {PHONE_DISPLAY}</span>
+          </a>
+
+          <WhatsAppButton
+            message={whatsappMessage}
+            variant="primary"
+            className="flex-1 text-xs sm:text-sm min-h-[46px] justify-center"
+          />
+        </div>
       </div>
     </section>
   );

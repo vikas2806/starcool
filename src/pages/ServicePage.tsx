@@ -1,5 +1,5 @@
-import { useParams, Navigate } from 'react-router-dom';
-import { getServiceBySlug } from '../data/services';
+import { useParams, Navigate, Link } from 'react-router-dom';
+import { getServiceBySlug, services } from '../data/services';
 import { SITE_URL, SITE_NAME, PHONE_TEL } from '../config/contact';
 import SEOHead from '../components/SEOHead';
 import Navbar from '../components/Navbar';
@@ -11,38 +11,39 @@ import CtaBanner from '../components/CtaBanner';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import MobileStickyBar from '../components/MobileStickyBar';
+import { ArrowRight, Home as HomeIcon } from 'lucide-react';
 
-// Image imports — Vite handles these
-import heroAC from '../assets/images/hero-ac.jpg';
-import heroMicrowave from '../assets/images/hero-microwave.jpg';
-import heroWashing from '../assets/images/hero-washing-machine.jpg';
-import heroFridge from '../assets/images/hero-refrigerator.jpg';
-import probAC from '../assets/images/problems-ac.jpg';
-import probMicrowave from '../assets/images/problems-microwave.jpg';
-import probWashing from '../assets/images/problems-washing-machine.jpg';
-import probFridge from '../assets/images/problems-refrigerator.jpg';
-import ctaAC from '../assets/images/cta-ac.jpg';
-import ctaMicrowave from '../assets/images/cta-microwave.jpg';
-import ctaWashing from '../assets/images/cta-washing-machine.jpg';
-import ctaFridge from '../assets/images/cta-refrigerator.jpg';
+// WebP image imports
+import heroAC from '../assets/images/hero-ac.webp';
+import heroMicrowave from '../assets/images/hero-microwave.webp';
+import heroWashing from '../assets/images/hero-washing-machine.webp';
+import heroFridge from '../assets/images/hero-refrigerator.webp';
+import probAC from '../assets/images/problems-ac.webp';
+import probMicrowave from '../assets/images/problems-microwave.webp';
+import probWashing from '../assets/images/problems-washing-machine.webp';
+import probFridge from '../assets/images/problems-refrigerator.webp';
+import ctaAC from '../assets/images/cta-ac.webp';
+import ctaMicrowave from '../assets/images/cta-microwave.webp';
+import ctaWashing from '../assets/images/cta-washing-machine.webp';
+import ctaFridge from '../assets/images/cta-refrigerator.webp';
 
 const heroImages: Record<string, string> = {
-  'ac-repair': heroAC,
-  'microwave-repair': heroMicrowave,
-  'washing-machine-repair': heroWashing,
-  'refrigerator-repair': heroFridge,
+  'ac-repair-mumbai': heroAC,
+  'microwave-repair-mumbai': heroMicrowave,
+  'washing-machine-repair-mumbai': heroWashing,
+  'refrigerator-repair-mumbai': heroFridge,
 };
 const problemImages: Record<string, string> = {
-  'ac-repair': probAC,
-  'microwave-repair': probMicrowave,
-  'washing-machine-repair': probWashing,
-  'refrigerator-repair': probFridge,
+  'ac-repair-mumbai': probAC,
+  'microwave-repair-mumbai': probMicrowave,
+  'washing-machine-repair-mumbai': probWashing,
+  'refrigerator-repair-mumbai': probFridge,
 };
 const ctaImages: Record<string, string> = {
-  'ac-repair': ctaAC,
-  'microwave-repair': ctaMicrowave,
-  'washing-machine-repair': ctaWashing,
-  'refrigerator-repair': ctaFridge,
+  'ac-repair-mumbai': ctaAC,
+  'microwave-repair-mumbai': ctaMicrowave,
+  'washing-machine-repair-mumbai': ctaWashing,
+  'refrigerator-repair-mumbai': ctaFridge,
 };
 
 interface ServicePageProps {
@@ -56,19 +57,46 @@ export default function ServicePage({ slugOverride }: ServicePageProps = {}) {
 
   if (!service) return <Navigate to="/404" replace />;
 
-  const jsonLd = {
+  const serviceJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: SITE_NAME,
-    telephone: PHONE_TEL,
-    areaServed: 'Mumbai',
-    url: `${SITE_URL}/${service.slug}`,
-    description: service.seoDescription,
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: service.title,
+    '@type': 'Service',
+    name: service.heading,
+    serviceType: service.title,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: SITE_NAME,
+      telephone: PHONE_TEL,
+      url: `${SITE_URL}/`,
     },
+    areaServed: {
+      '@type': 'City',
+      name: 'Mumbai',
+    },
+    description: service.seoDescription,
+    url: `${SITE_URL}/${service.slug}`,
   };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: `${SITE_URL}/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: service.title,
+        item: `${SITE_URL}/${service.slug}`,
+      },
+    ],
+  };
+
+  // Other 3 services for cross-linking
+  const otherServices = services.filter((s) => s.slug !== service.slug);
 
   return (
     <>
@@ -76,7 +104,8 @@ export default function ServicePage({ slugOverride }: ServicePageProps = {}) {
         title={service.seoTitle}
         description={service.seoDescription}
         canonical={`/${service.slug}`}
-        jsonLd={jsonLd}
+        preloadImage={heroImages[service.slug]}
+        jsonLd={[serviceJsonLd, breadcrumbJsonLd]}
       />
       <Navbar />
       <main>
@@ -103,6 +132,47 @@ export default function ServicePage({ slugOverride }: ServicePageProps = {}) {
           ctaImageSrc={ctaImages[service.slug]}
           ctaImageAlt={service.ctaImageAlt}
         />
+
+        {/* Cross-linking to other 3 services and Home */}
+        <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-100" aria-label="Other appliance repair services">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-[#0B1F3F]">
+                Other Appliance Repair Services in Mumbai
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                Same-day doorstep repair across all Mumbai suburbs
+              </p>
+            </div>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#F97316] hover:underline"
+            >
+              <HomeIcon size={16} />
+              <span>Back to Home</span>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {otherServices.map((other) => (
+              <Link
+                key={other.slug}
+                to={`/${other.slug}`}
+                className="group p-5 rounded-2xl border border-gray-200 hover:border-orange-300 bg-white shadow-sm hover:shadow-md transition-all flex items-center justify-between"
+              >
+                <div>
+                  <h3 className="font-bold text-sm text-[#0B1F3F] group-hover:text-[#F97316] transition-colors">
+                    {other.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 mt-0.5">Doorstep repair in Mumbai</p>
+                </div>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center bg-orange-50 text-[#F97316] group-hover:bg-[#F97316] group-hover:text-white transition-colors">
+                  <ArrowRight size={16} />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
       <Footer />
       <WhatsAppButton message={service.whatsappMessage} variant="floating" />

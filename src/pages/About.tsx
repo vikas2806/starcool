@@ -3,15 +3,15 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import MobileStickyBar from '../components/MobileStickyBar';
-import { SITE_NAME, WHATSAPP_MESSAGES, PHONE_TEL, PHONE_DISPLAY } from '../config/contact';
+import { WHATSAPP_MESSAGES, PHONE_TEL, PHONE_DISPLAY } from '../config/contact';
 import { Phone, Wrench, Clock, ShieldCheck, Star } from 'lucide-react';
 
 export default function About() {
   return (
     <>
       <SEOHead
-        title={`About Us | ${SITE_NAME}`}
-        description="Learn about Star Cool Appliance Repairs — your local appliance repair specialists in Mumbai. Experienced technicians, honest pricing, and fast doorstep service."
+        title="About Us | Star Cool Appliance Repairs Mumbai"
+        description="Learn about Star Cool Appliance Repairs in Mumbai. Experienced local technicians delivering transparent, reliable doorstep appliance repairs across the city."
         canonical="/about"
       />
       <Navbar />
@@ -25,9 +25,9 @@ export default function About() {
           <div className="max-w-3xl mx-auto px-4">
             <h1
               id="about-heading"
-              className="text-3xl sm:text-5xl font-bold text-white mb-4"
+              className="text-2xl sm:text-4xl font-bold text-white mb-4"
             >
-              About <span style={{ color: '#F97316' }}>Star Cool</span>
+              About Star Cool Appliance Repairs in Mumbai
             </h1>
             <p className="text-white/80 text-lg">
               Professional appliance repair specialists in Mumbai — fast, affordable, and reliable.

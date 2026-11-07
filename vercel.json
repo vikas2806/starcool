@@ -1,5 +1,16 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "redirects": [
+    { "source": "/ac-repair", "destination": "/ac-repair-mumbai", "permanent": true },
+    { "source": "/refrigerator-repair", "destination": "/refrigerator-repair-mumbai", "permanent": true },
+    { "source": "/washing-machine-repair", "destination": "/washing-machine-repair-mumbai", "permanent": true },
+    { "source": "/microwave-repair", "destination": "/microwave-repair-mumbai", "permanent": true }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!assets/|fonts/|sitemap\\.xml|robots\\.txt|favicon\\.svg|manifest\\.webmanifest|.*\\..*).*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -23,4 +34,3 @@
     }
   ]
 }
-

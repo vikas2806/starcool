@@ -1,17 +1,11 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Phone,
   MessageCircle,
-  Zap,
-  ShieldCheck,
-  Settings,
   CheckCircle2,
   Calendar,
   Search,
   Wrench,
-  ChevronLeft,
-  ChevronRight,
   ArrowRight,
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -22,36 +16,38 @@ import MobileStickyBar from '../components/MobileStickyBar';
 import {
   PHONE_DISPLAY,
   PHONE_TEL,
-  SITE_URL,
   SITE_NAME,
   WHATSAPP_MESSAGES,
   buildWhatsAppUrl,
 } from '../config/contact';
 
-// Real appliance images extracted from the design
-import heroLandingImg from '../assets/images/hero-landing.jpg';
-import acApplianceImg from '../assets/images/cta-ac.jpg';
-import fridgeApplianceImg from '../assets/images/cta-refrigerator.jpg';
-import washerApplianceImg from '../assets/images/cta-washing-machine.jpg';
-import microwaveApplianceImg from '../assets/images/cta-microwave.jpg';
+// Real enhanced high-res images (WebP)
+import heroLandingImg from '../assets/images/hero-landing.webp';
+import acApplianceImg from '../assets/images/appliance-ac.webp';
+import fridgeApplianceImg from '../assets/images/appliance-refrigerator.webp';
+import washerApplianceImg from '../assets/images/appliance-washing-machine.webp';
+import microwaveApplianceImg from '../assets/images/appliance-microwave.webp';
 
 const homeJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: SITE_NAME,
   telephone: PHONE_TEL,
-  areaServed: 'Mumbai',
-  url: SITE_URL,
+  areaServed: {
+    '@type': 'City',
+    name: 'Mumbai',
+  },
+  url: 'https://starcoolmumbai.online/',
   description:
     'Fast, reliable and affordable appliance repair services at your doorstep in Mumbai. AC, refrigerator, washing machine and microwave repair.',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Appliance Repair Services',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AC Repair & Service' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Refrigerator Repair' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Washing Machine Repair' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Microwave Repair' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AC Repair in Mumbai' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Refrigerator Repair in Mumbai' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Washing Machine Repair in Mumbai' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Microwave Repair in Mumbai' } },
     ],
   },
 };
@@ -59,65 +55,38 @@ const homeJsonLd = {
 const servicesList = [
   {
     title: 'AC Repair & Service',
-    slug: 'ac-repair',
+    slug: 'ac-repair-mumbai',
     image: acApplianceImg,
     alt: 'Air conditioner unit repair service in Mumbai',
   },
   {
     title: 'Refrigerator Repair',
-    slug: 'refrigerator-repair',
+    slug: 'refrigerator-repair-mumbai',
     image: fridgeApplianceImg,
     alt: 'Refrigerator repair service in Mumbai',
   },
   {
     title: 'Washing Machine Repair',
-    slug: 'washing-machine-repair',
+    slug: 'washing-machine-repair-mumbai',
     image: washerApplianceImg,
     alt: 'Washing machine repair service in Mumbai',
   },
   {
     title: 'Microwave Repair',
-    slug: 'microwave-repair',
+    slug: 'microwave-repair-mumbai',
     image: microwaveApplianceImg,
     alt: 'Microwave oven repair service in Mumbai',
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      'Very professional and quick service. My AC was fixed on the same day. Highly recommend Star Cool!',
-    author: 'Mumbai Customer',
-  },
-  {
-    quote:
-      'Technician arrived on time and resolved our refrigerator cooling issue with genuine spare parts. Excellent work!',
-    author: 'Andheri Customer',
-  },
-  {
-    quote:
-      'Quick response on WhatsApp and same-day washing machine repair at fair transparent pricing.',
-    author: 'Bandra Customer',
-  },
-];
-
 export default function Home() {
-  const [reviewIdx, setReviewIdx] = useState(0);
-
-  const prevReview = () => {
-    setReviewIdx((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-
-  const nextReview = () => {
-    setReviewIdx((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
-
   return (
     <>
       <SEOHead
-        title="Appliance Repair in Mumbai | Star Cool Appliance Repairs"
-        description="Fast & reliable appliance repair at your doorstep in Mumbai. AC, refrigerator, washing machine & microwave repair by experienced technicians. Call +91 77388 07317 or WhatsApp."
+        title="Appliance Repair in Mumbai | Doorstep Service | Star Cool"
+        description="Top-rated appliance repair in Mumbai. Star Cool provides fast doorstep repair for ACs, refrigerators, washing machines, and microwaves. Call +91 77388 07317."
         canonical="/"
+        preloadImage={heroLandingImg}
         jsonLd={homeJsonLd}
       />
       <Navbar />
@@ -125,117 +94,83 @@ export default function Home() {
       <main className="pb-16 lg:pb-0">
         {/* ===================== HERO SECTION ===================== */}
         <section
-          className="relative pt-24 sm:pt-28 pb-14 sm:pb-16 overflow-hidden"
+          className="relative pt-20 sm:pt-24 pb-10 sm:pb-14 overflow-hidden"
           style={{ backgroundColor: '#0B1F3F' }}
           aria-label="Hero"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Left Column: Headline & Action */}
-              <div className="lg:col-span-7 z-10">
-                {/* Top Badge */}
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-white/90 bg-white/10 border border-white/20 mb-3">
-                  <span className="text-orange-400 font-bold">&#10003;</span>
-                  <span>Home Appliance Repair Experts</span>
-                </div>
+          {/* Full-Height Right Technician Image (Seamless, spans whole height of blue section) */}
+          <div className="absolute right-0 top-0 bottom-0 w-[55%] sm:w-[50%] lg:w-[48%] pointer-events-none overflow-hidden flex items-stretch justify-end">
+            {/* Soft left gradient fade into #0B1F3F */}
+            <div
+              className="absolute inset-y-0 left-0 w-16 sm:w-28 z-10 pointer-events-none"
+              style={{
+                background: 'linear-gradient(to right, #0B1F3F 0%, transparent 100%)',
+              }}
+            />
+            <img
+              src={heroLandingImg}
+              alt="Star Cool expert technician servicing appliances in Mumbai"
+              className="w-full h-full object-cover object-left-top"
+              loading="eager"
+              width="1200"
+              height="815"
+            />
+          </div>
 
-                {/* Main Heading */}
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight tracking-tight mb-3">
-                  Fast &amp; Reliable<br />
-                  Appliance Repair<br />
-                  <span className="text-white">at Your Doorstep</span>
-                </h1>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {/* Left Content Column (aligned with image in same viewport) */}
+            <div className="w-[58%] sm:w-[52%] lg:w-[52%] py-3 sm:py-6">
+              <h1 className="text-xl xs:text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-2 sm:mb-4">
+                Fast &amp; Reliable<br />
+                Appliance Repair<br />
+                <span className="text-white">in Mumbai at Your Doorstep</span>
+              </h1>
 
-                {/* Serving Across Mumbai Pill */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-white mb-3 shadow-sm" style={{ backgroundColor: '#F97316' }}>
-                  <span>Serving Across Mumbai</span>
-                  <span className="text-xs">&#127970;</span>
-                </div>
-
-                {/* Subtitle */}
-                <p className="text-white/80 text-xs sm:text-sm font-normal max-w-lg mb-6 leading-relaxed">
-                  AC, Refrigerator, Washing Machine &amp; Microwave Repair Services by Experienced Technicians.
-                </p>
-
-                {/* 4 Trust Highlights Strip */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3 border-t border-b border-white/10 mb-6">
-                  <div className="flex items-center gap-2">
-                    <Zap size={16} className="text-orange-400 flex-shrink-0" />
-                    <span className="text-white text-xs font-medium">Same-Day Service</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck size={16} className="text-orange-400 flex-shrink-0" />
-                    <span className="text-white text-xs font-medium">Experienced Technicians</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Settings size={16} className="text-orange-400 flex-shrink-0" />
-                    <span className="text-white text-xs font-medium">Genuine Parts</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-orange-400 font-bold text-sm flex-shrink-0">&#8377;</span>
-                    <span className="text-white text-xs font-medium">Transparent Pricing</span>
-                  </div>
-                </div>
-
-                {/* Two Action Buttons side by side with proper gap below */}
-                <div className="flex flex-row flex-wrap sm:flex-nowrap gap-3 pb-4">
-                  {/* Call Now Button */}
-                  <a
-                    href={`tel:${PHONE_TEL}`}
-                    className="flex-1 min-w-[150px] inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full text-white font-bold shadow-lg transition-transform active:scale-95 hover:opacity-95"
-                    style={{ backgroundColor: '#F97316' }}
-                  >
-                    <Phone size={18} />
-                    <div className="text-left leading-tight">
-                      <div className="text-[11px] font-normal uppercase opacity-90">Call Now</div>
-                      <div className="text-xs sm:text-sm font-extrabold">{PHONE_DISPLAY}</div>
-                    </div>
-                  </a>
-
-                  {/* WhatsApp Us Button */}
-                  <a
-                    href={buildWhatsAppUrl(WHATSAPP_MESSAGES.generic)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[150px] inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full font-bold bg-white text-gray-900 border-2 shadow-lg transition-transform active:scale-95 hover:bg-green-50"
-                    style={{ borderColor: '#25D366' }}
-                  >
-                    <MessageCircle size={20} style={{ color: '#25D366' }} fill="#25D366" color="white" />
-                    <div className="text-left leading-tight">
-                      <div className="text-xs sm:text-sm font-extrabold" style={{ color: '#0B1F3F' }}>WhatsApp Us</div>
-                      <div className="text-[10px] text-gray-500 font-normal">Get Quick Response</div>
-                    </div>
-                  </a>
-                </div>
+              {/* Serving Across Mumbai Pill */}
+              <div
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold text-white shadow-sm mb-4 sm:mb-6"
+                style={{ backgroundColor: '#F97316' }}
+              >
+                <span>Serving Across Mumbai</span>
+                <span>🏙️</span>
               </div>
+            </div>
 
-              {/* Right Column: Hero Image with curved orange background */}
-              <div className="lg:col-span-5 relative flex items-center justify-center">
-                <div className="relative w-full max-w-sm lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
-                  {/* Curved orange accent overlay */}
-                  <div
-                    className="absolute -left-12 -top-12 w-36 h-36 rounded-full opacity-60 pointer-events-none"
-                    style={{ backgroundColor: '#F97316', filter: 'blur(30px)' }}
-                  />
-                  <img
-                    src={heroLandingImg}
-                    alt="Star Cool expert technician servicing home appliances in Mumbai"
-                    className="w-full h-64 sm:h-80 lg:h-96 object-cover object-top"
-                    width="400"
-                    height="320"
-                    fetchPriority="high"
-                  />
-                </div>
-              </div>
+            {/* Buttons Row with solid green WhatsApp and generous gap below */}
+            <div className="flex flex-row items-center gap-3 pt-2 pb-2 max-w-lg sm:max-w-xl">
+              {/* Call Now Button (Orange) */}
+              <a
+                href={`tel:${PHONE_TEL}`}
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-3 rounded-full text-white font-bold shadow-lg transition-transform active:scale-95 text-xs sm:text-sm min-h-[46px]"
+                style={{ backgroundColor: '#F97316' }}
+              >
+                <Phone size={16} />
+                <span>Call Now {PHONE_DISPLAY}</span>
+              </a>
+
+              {/* WhatsApp Us Button (Solid Green with white text) */}
+              <a
+                href={buildWhatsAppUrl(WHATSAPP_MESSAGES.generic)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-3 rounded-full text-white font-bold shadow-lg transition-transform active:scale-95 text-xs sm:text-sm min-h-[46px]"
+                style={{ backgroundColor: '#25D366' }}
+              >
+                <MessageCircle size={18} fill="white" color="white" />
+                <span>WhatsApp Us</span>
+              </a>
             </div>
           </div>
         </section>
 
         {/* ===================== APPLIANCE REPAIR SERVICES WE OFFER ===================== */}
-        <section className="bg-white py-12 sm:py-16" aria-labelledby="services-heading">
+        <section className="bg-white py-10 sm:py-14" aria-labelledby="services-heading">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-2" style={{ backgroundColor: '#FFF3E8', color: '#F97316' }}>
+              <span
+                className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-2"
+                style={{ backgroundColor: '#FFF3E8', color: '#F97316' }}
+              >
                 Our Services
               </span>
               <h2 id="services-heading" className="text-2xl sm:text-3xl font-extrabold text-[#0B1F3F]">
@@ -243,7 +178,7 @@ export default function Home() {
               </h2>
             </div>
 
-            {/* 2x2 Service Cards with real appliance images */}
+            {/* 2x2 Service Cards with real crisp appliance images */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {servicesList.map((service) => (
                 <Link
@@ -290,7 +225,10 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
               {/* Left Heading */}
               <div className="md:col-span-5 text-left">
-                <h3 id="why-heading" className="text-2xl sm:text-3xl font-extrabold text-[#0B1F3F] leading-tight mb-2">
+                <h3
+                  id="why-heading"
+                  className="text-2xl sm:text-3xl font-extrabold text-[#0B1F3F] leading-tight mb-2"
+                >
                   Why Choose<br />Star Cool?
                 </h3>
                 <div className="w-16 h-1 rounded-full mb-3" style={{ backgroundColor: '#F97316' }} />
@@ -299,7 +237,7 @@ export default function Home() {
               {/* Right Checklist */}
               <div className="md:col-span-7 space-y-2.5">
                 {[
-                  'Trusted & Rated 5.0 on Google',
+                  'Professional & Dependable Service',
                   'Skilled & Verified Technicians',
                   'Doorstep Service Across Mumbai',
                   'Fair & Transparent Pricing',
@@ -357,7 +295,8 @@ export default function Home() {
                     <Search size={22} style={{ color: '#F97316' }} />
                   </div>
                   <span className="text-[11px] sm:text-xs font-semibold text-white/95 leading-tight">
-                    2. Inspection<br /><span className="text-[10px] text-white/70">(Issue Check)</span>
+                    2. Inspection<br />
+                    <span className="text-[10px] text-white/70">(Issue Check)</span>
                   </span>
                 </div>
 
@@ -369,63 +308,12 @@ export default function Home() {
                     <Wrench size={22} style={{ color: '#F97316' }} />
                   </div>
                   <span className="text-[11px] sm:text-xs font-semibold text-white/95 leading-tight">
-                    3. Repair &amp; Test<br /><span className="text-[10px] text-white/70">(Fixed &amp; Ready)</span>
+                    3. Repair &amp; Test<br />
+                    <span className="text-[10px] text-white/70">(Fixed &amp; Ready)</span>
                   </span>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* ===================== WHAT OUR CUSTOMERS SAY ===================== */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="reviews-heading">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-            <div className="flex items-center gap-2">
-              {/* Google G Icon */}
-              <div className="w-6 h-6 rounded-full bg-white shadow-sm flex items-center justify-center font-bold text-sm text-blue-600 border border-gray-200">
-                G
-              </div>
-              <h3 id="reviews-heading" className="text-base sm:text-lg font-bold text-[#0B1F3F]">
-                What Our Customers Say
-              </h3>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-gray-600">
-              <span className="font-bold text-gray-900">5.0</span>
-              <span className="text-yellow-400 font-bold">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span className="text-blue-600 font-medium hover:underline cursor-pointer">
-                (37 Google Reviews)
-              </span>
-            </div>
-          </div>
-
-          {/* Testimonial Box with Carousel Controls */}
-          <div className="relative bg-white rounded-2xl border border-gray-100 p-6 shadow-sm flex items-center gap-3">
-            <button
-              type="button"
-              onClick={prevReview}
-              aria-label="Previous review"
-              className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-100 flex-shrink-0 focus:outline-none"
-            >
-              <ChevronLeft size={18} />
-            </button>
-
-            <div className="flex-1 text-center sm:text-left px-2">
-              <p className="text-xs sm:text-sm text-gray-700 italic mb-2 leading-relaxed">
-                &ldquo;{testimonials[reviewIdx].quote}&rdquo;
-              </p>
-              <p className="text-xs font-bold text-gray-500">
-                &mdash; {testimonials[reviewIdx].author}
-              </p>
-            </div>
-
-            <button
-              type="button"
-              onClick={nextReview}
-              aria-label="Next review"
-              className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-100 flex-shrink-0 focus:outline-none"
-            >
-              <ChevronRight size={18} />
-            </button>
           </div>
         </section>
       </main>

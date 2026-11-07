@@ -1,15 +1,13 @@
-import { useEffect, lazy, Suspense } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
-// Eager-loaded pages
 import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Reviews from './pages/Reviews';
+import ServicePage from './pages/ServicePage';
 import NotFound from './pages/NotFound';
-
-// Route-based code splitting
-const About = lazy(() => import('./pages/About'));
-const Contact = lazy(() => import('./pages/Contact'));
-const ServicePage = lazy(() => import('./pages/ServicePage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -21,35 +19,23 @@ function ScrollToTop() {
   return null;
 }
 
-function Loading() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0B1F3F]">
-      <div className="text-white text-lg font-semibold animate-pulse">Loading…</div>
-    </div>
-  );
-}
-
 export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* Specific Service routes */}
-            <Route path="/ac-repair" element={<ServicePage slugOverride="ac-repair" />} />
-            <Route path="/microwave-repair" element={<ServicePage slugOverride="microwave-repair" />} />
-            <Route path="/washing-machine-repair" element={<ServicePage slugOverride="washing-machine-repair" />} />
-            <Route path="/refrigerator-repair" element={<ServicePage slugOverride="refrigerator-repair" />} />
-            {/* Dynamic slug route fallback */}
-            <Route path="/:slug" element={<ServicePage />} />
-            <Route path="/404" element={<NotFound />} />
-            <Route path="*" element={<Navigate to="/404" replace />} />
-          </Routes>
-        </Suspense>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/ac-repair-mumbai" element={<ServicePage slugOverride="ac-repair-mumbai" />} />
+          <Route path="/microwave-repair-mumbai" element={<ServicePage slugOverride="microwave-repair-mumbai" />} />
+          <Route path="/washing-machine-repair-mumbai" element={<ServicePage slugOverride="washing-machine-repair-mumbai" />} />
+          <Route path="/refrigerator-repair-mumbai" element={<ServicePage slugOverride="refrigerator-repair-mumbai" />} />
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/404" replace />} />
+        </Routes>
       </BrowserRouter>
     </HelmetProvider>
   );

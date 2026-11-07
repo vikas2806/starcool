@@ -1,4 +1,4 @@
-import { Phone, MessageCircle, MapPin, Clock } from 'lucide-react';
+import { Phone, MessageCircle, MapPin } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -11,15 +11,15 @@ export default function Contact() {
     <>
       <SEOHead
         title="Contact Us | Star Cool Appliance Repairs Mumbai"
-        description="Contact Star Cool Appliance Repairs in Mumbai. Call or WhatsApp us for fast appliance repair service."
+        description="Contact Star Cool for fast appliance repair in Mumbai. Call +91 77388 07317 or message via WhatsApp for prompt doorstep service across all Mumbai locations."
         canonical="/contact"
       />
       <Navbar />
       <main className="pt-20 min-h-[60vh] bg-gray-50">
         <div className="max-w-2xl mx-auto px-6 py-16">
           <div className="text-center mb-10">
-            <h1 className="text-3xl font-bold mb-2 text-[#0B1F3F]">
-              Contact Us
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-[#0B1F3F]">
+              Contact Star Cool Appliance Repair in Mumbai
             </h1>
             <div className="w-12 h-1 rounded-full mx-auto bg-[#F97316]" />
           </div>
@@ -60,17 +60,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="font-bold mb-1 text-[#0B1F3F]">Service Area</p>
-                <p className="text-gray-600">Mumbai, Maharashtra, India</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#FFF3E8]">
-                <Clock size={22} className="text-[#F97316]" />
-              </div>
-              <div>
-                <p className="font-bold mb-1 text-[#0B1F3F]">Working Hours</p>
-                <p className="text-gray-600">Monday – Saturday, 9:00 AM – 7:00 PM</p>
+                <p className="text-gray-600">Doorstep service across Mumbai, Maharashtra, India</p>
               </div>
             </div>
 

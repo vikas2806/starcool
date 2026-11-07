@@ -5,10 +5,10 @@ import Logo from './Logo';
 import { PHONE_DISPLAY, PHONE_TEL } from '../config/contact';
 
 const serviceLinks = [
-  { to: '/ac-repair', label: 'AC Repair' },
-  { to: '/microwave-repair', label: 'Microwave Repair' },
-  { to: '/washing-machine-repair', label: 'Washing Machine Repair' },
-  { to: '/refrigerator-repair', label: 'Refrigerator Repair' },
+  { to: '/ac-repair-mumbai', label: 'AC Repair' },
+  { to: '/microwave-repair-mumbai', label: 'Microwave Repair' },
+  { to: '/washing-machine-repair-mumbai', label: 'Washing Machine Repair' },
+  { to: '/refrigerator-repair-mumbai', label: 'Refrigerator Repair' },
 ];
 
 export default function Navbar() {
@@ -98,6 +98,9 @@ export default function Navbar() {
           <NavLink to="/about" className={navLinkClass}>
             About Us
           </NavLink>
+          <NavLink to="/reviews" className={navLinkClass}>
+            Reviews
+          </NavLink>
           <NavLink to="/contact" className={navLinkClass}>
             Contact
           </NavLink>
@@ -153,6 +156,9 @@ export default function Navbar() {
             </div>
             <NavLink to="/about" className={navLinkClass}>
               About Us
+            </NavLink>
+            <NavLink to="/reviews" className={navLinkClass}>
+              Reviews
             </NavLink>
             <NavLink to="/contact" className={navLinkClass}>
               Contact

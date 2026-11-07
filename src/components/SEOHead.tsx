@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Head } from 'vite-react-ssg';
 import { SITE_URL, OG_SITE_NAME } from '../config/contact';
 
 interface SEOHeadProps {
@@ -6,18 +6,29 @@ interface SEOHeadProps {
   description: string;
   canonical: string;
   ogImage?: string;
-  jsonLd?: Record<string, unknown>;
+  preloadImage?: string;
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-export default function SEOHead({ title, description, canonical, ogImage, jsonLd }: SEOHeadProps) {
+export default function SEOHead({
+  title,
+  description,
+  canonical,
+  ogImage,
+  preloadImage,
+  jsonLd,
+}: SEOHeadProps) {
   const fullCanonical = `${SITE_URL}${canonical}`;
   const image = ogImage ?? `${SITE_URL}/og-default.jpg`;
 
   return (
-    <Helmet>
+    <Head>
+      <meta charSet="UTF-8" />
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={fullCanonical} />
+
+      {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
 
       {/* Open Graph */}
       <meta property="og:title" content={title} />
@@ -37,6 +48,6 @@ export default function SEOHead({ title, description, canonical, ogImage, jsonLd
       {jsonLd && (
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       )}
-    </Helmet>
+    </Head>
   );
 }

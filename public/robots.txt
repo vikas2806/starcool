@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://starcool.example/sitemap.xml
-
+Sitemap: https://starcoolmumbai.online/sitemap.xml

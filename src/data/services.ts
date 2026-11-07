@@ -16,7 +16,7 @@ export interface ServiceData {
 
 export const services: ServiceData[] = [
   {
-    slug: 'ac-repair',
+    slug: 'ac-repair-mumbai',
     title: 'AC Repair',
     badgeText: 'AC Repair & Service',
     heading: 'Professional AC Repair Service in Mumbai',
@@ -31,14 +31,14 @@ export const services: ServiceData[] = [
       'AC not switching on',
       'Low cooling / performance issues',
     ],
-    seoTitle: 'AC Repair in Mumbai | Star Cool Appliance Repairs',
+    seoTitle: 'AC Repair in Mumbai | Fast Doorstep Service | Star Cool',
     seoDescription:
-      'Fast, reliable AC repair service at your doorstep in Mumbai. Call or WhatsApp Star Cool for same-day AC repair.',
+      'Get fast, professional AC repair in Mumbai at your doorstep. Skilled technicians fix cooling issues, gas leakages, and servicing. Call or WhatsApp Star Cool!',
     whatsappMessage: 'Hi Star Cool, I need AC repair in Mumbai.',
     ctaSubtext: 'Get your AC serviced by experienced professionals today!',
   },
   {
-    slug: 'microwave-repair',
+    slug: 'microwave-repair-mumbai',
     title: 'Microwave Repair',
     badgeText: 'Microwave Repair & Service',
     heading: 'Professional Microwave Repair in Mumbai',
@@ -53,14 +53,14 @@ export const services: ServiceData[] = [
       'Unusual noise or spark inside',
       'Control panel not working',
     ],
-    seoTitle: 'Microwave Repair in Mumbai | Star Cool Appliance Repairs',
+    seoTitle: 'Microwave Repair in Mumbai | Doorstep Service | Star Cool',
     seoDescription:
-      'Expert microwave repair service at your doorstep in Mumbai. Call or WhatsApp Star Cool for fast microwave repair.',
+      'Expert microwave oven repair in Mumbai at your doorstep. Star Cool fixes heating problems, sparks, and keypad faults with genuine parts. Call us today!',
     whatsappMessage: 'Hi Star Cool, I need microwave repair in Mumbai.',
     ctaSubtext: 'Get your microwave fixed by experienced professionals today!',
   },
   {
-    slug: 'washing-machine-repair',
+    slug: 'washing-machine-repair-mumbai',
     title: 'Washing Machine Repair',
     badgeText: 'Washing Machine Repair & Service',
     heading: 'Professional Washing Machine Repair in Mumbai',
@@ -75,14 +75,14 @@ export const services: ServiceData[] = [
       'Unusual noise or vibration',
       'Washing not cleaning properly',
     ],
-    seoTitle: 'Washing Machine Repair in Mumbai | Star Cool Appliance Repairs',
+    seoTitle: 'Washing Machine Repair in Mumbai | Doorstep | Star Cool',
     seoDescription:
-      'Reliable washing machine repair service at your doorstep in Mumbai. Call or WhatsApp Star Cool for fast repair.',
+      'Trusted washing machine repair in Mumbai at your doorstep. We repair spinning issues, drainage problems, and motor errors for all major brands. Book now!',
     whatsappMessage: 'Hi Star Cool, I need washing machine repair in Mumbai.',
     ctaSubtext: 'Get your washing machine fixed by experienced professionals today!',
   },
   {
-    slug: 'refrigerator-repair',
+    slug: 'refrigerator-repair-mumbai',
     title: 'Refrigerator Repair',
     badgeText: 'Refrigerator Repair & Service',
     heading: 'Professional Refrigerator Repair in Mumbai',
@@ -97,9 +97,9 @@ export const services: ServiceData[] = [
       'Unusual noise from the fridge',
       'Compressor or power issue',
     ],
-    seoTitle: 'Refrigerator Repair in Mumbai | Star Cool Appliance Repairs',
+    seoTitle: 'Refrigerator Repair in Mumbai | Doorstep | Star Cool',
     seoDescription:
-      'Fast refrigerator repair service at your doorstep in Mumbai. Call or WhatsApp Star Cool for same-day fridge repair.',
+      'Fast refrigerator repair in Mumbai at your doorstep. Star Cool technicians resolve cooling issues, compressor faults, and gas refills quickly. Contact us!',
     whatsappMessage: 'Hi Star Cool, I need refrigerator repair in Mumbai.',
     ctaSubtext: 'Get your refrigerator serviced by experienced professionals today!',
   },
