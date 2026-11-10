@@ -5,7 +5,7 @@ import SEOHead from '../components/SEOHead';
 import Navbar from '../components/Navbar';
 import HeroBanner from '../components/HeroBanner';
 import TrustStrip from '../components/TrustStrip';
-import CommonProblems from '../components/CommonProblems';
+
 import ProcessSteps from '../components/ProcessSteps';
 import CtaBanner from '../components/CtaBanner';
 import Footer from '../components/Footer';
@@ -14,17 +14,14 @@ import MobileStickyBar from '../components/MobileStickyBar';
 import { ArrowRight, Home as HomeIcon } from 'lucide-react';
 
 // WebP image imports
-import heroAC from '../assets/images/hero-ac.webp';
-import heroMicrowave from '../assets/images/hero-microwave.webp';
-import heroWashing from '../assets/images/hero-washing-machine.webp';
-import heroFridge from '../assets/images/hero-refrigerator.webp';
-import probAC from '../assets/images/problems-ac.webp';
-import probMicrowave from '../assets/images/problems-microwave.webp';
-import probWashing from '../assets/images/problems-washing-machine.webp';
-import probFridge from '../assets/images/problems-refrigerator.webp';
+import heroAC from '../assets/images/hero-ac.png';
+import heroMicrowave from '../assets/images/hero-microwave.png';
+import heroWashing from '../assets/images/hero-washing-machine.png';
+import heroFridge from '../assets/images/hero-refrigerator.png';
+// 
 import ctaAC from '../assets/images/cta-ac.webp';
-import ctaMicrowave from '../assets/images/cta-microwave.webp';
-import ctaWashing from '../assets/images/cta-washing-machine.webp';
+
+
 import ctaFridge from '../assets/images/cta-refrigerator.webp';
 
 const heroImages: Record<string, string> = {
@@ -33,16 +30,11 @@ const heroImages: Record<string, string> = {
   'washing-machine-repair-mumbai': heroWashing,
   'refrigerator-repair-mumbai': heroFridge,
 };
-const problemImages: Record<string, string> = {
-  'ac-repair-mumbai': probAC,
-  'microwave-repair-mumbai': probMicrowave,
-  'washing-machine-repair-mumbai': probWashing,
-  'refrigerator-repair-mumbai': probFridge,
-};
+
 const ctaImages: Record<string, string> = {
   'ac-repair-mumbai': ctaAC,
-  'microwave-repair-mumbai': ctaMicrowave,
-  'washing-machine-repair-mumbai': ctaWashing,
+  'microwave-repair-mumbai': heroMicrowave,
+  'washing-machine-repair-mumbai': heroWashing,
   'refrigerator-repair-mumbai': ctaFridge,
 };
 
@@ -108,7 +100,7 @@ export default function ServicePage({ slugOverride }: ServicePageProps = {}) {
         jsonLd={[serviceJsonLd, breadcrumbJsonLd]}
       />
       <Navbar />
-      <main>
+      <main className="pb-16 lg:pb-0">
         <HeroBanner
           badgeText={service.badgeText}
           heading={service.heading}
@@ -118,12 +110,7 @@ export default function ServicePage({ slugOverride }: ServicePageProps = {}) {
           heroImageAlt={service.heroImageAlt}
         />
         <TrustStrip />
-        <CommonProblems
-          serviceTitle={service.title}
-          problems={service.problems}
-          imageSrc={problemImages[service.slug]}
-          imageAlt={service.problemsImageAlt}
-        />
+
         <ProcessSteps serviceTitle={service.title} />
         <CtaBanner
           serviceTitle={service.title}

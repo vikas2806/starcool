@@ -10,7 +10,6 @@ const quickLinks = [
   { to: '/washing-machine-repair-mumbai', label: 'Washing Machine Repair' },
   { to: '/refrigerator-repair-mumbai', label: 'Refrigerator Repair' },
   { to: '/about', label: 'About Us' },
-  { to: '/reviews', label: 'Reviews' },
   { to: '/contact', label: 'Contact' },
 ];
 

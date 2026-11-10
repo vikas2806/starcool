@@ -22,11 +22,11 @@ import {
 } from '../config/contact';
 
 // Real enhanced high-res images (WebP)
-import heroLandingImg from '../assets/images/hero-landing.webp';
-import acApplianceImg from '../assets/images/appliance-ac.webp';
-import fridgeApplianceImg from '../assets/images/appliance-refrigerator.webp';
-import washerApplianceImg from '../assets/images/appliance-washing-machine.webp';
-import microwaveApplianceImg from '../assets/images/appliance-microwave.webp';
+import heroLandingImg from '../assets/images/hero-ac.png';
+import acApplianceImg from '../assets/images/card-ac.webp';
+import fridgeApplianceImg from '../assets/images/card-refrigerator.webp';
+import washerApplianceImg from '../assets/images/card-washing-machine.webp';
+import microwaveApplianceImg from '../assets/images/card-microwave.webp';
 
 const homeJsonLd = {
   '@context': 'https://schema.org',
@@ -94,32 +94,54 @@ export default function Home() {
       <main className="pb-16 lg:pb-0">
         {/* ===================== HERO SECTION ===================== */}
         <section
-          className="relative pt-20 sm:pt-24 pb-10 sm:pb-14 overflow-hidden"
-          style={{ backgroundColor: '#0B1F3F' }}
+          className="relative pt-20 sm:pt-24 pb-8 sm:pb-12 overflow-hidden bg-[#0B1F3F]"
           aria-label="Hero"
         >
-          {/* Full-Height Right Technician Image (Seamless, spans whole height of blue section) */}
-          <div className="absolute right-0 top-0 bottom-0 w-[55%] sm:w-[50%] lg:w-[48%] pointer-events-none overflow-hidden flex items-stretch justify-end">
-            {/* Soft left gradient fade into #0B1F3F */}
+          {/* Right Technician Photo Block with SVG clip-path and 7px orange stroke */}
+          {/* On mobile: upper-right 45% width, bleeding to top & right. On laptop: right 48-50% width, full height */}
+          <div className="max-[339px]:hidden absolute right-0 top-0 h-[260px] xs:h-[290px] sm:h-[340px] md:h-full md:bottom-0 w-[45%] md:w-[48%] lg:w-[50%] pointer-events-none overflow-hidden flex items-stretch justify-end">
+            <svg className="absolute inset-0 w-0 h-0" aria-hidden="true">
+              <defs>
+                <clipPath id="hero-curve-clip-home" clipPathUnits="objectBoundingBox">
+                  <path d="M 0.12 0 C 0.02 0.3, 0.00 0.6, 0.10 1 L 1 1 L 1 0 Z" />
+                </clipPath>
+              </defs>
+            </svg>
+
             <div
-              className="absolute inset-y-0 left-0 w-16 sm:w-28 z-10 pointer-events-none"
-              style={{
-                background: 'linear-gradient(to right, #0B1F3F 0%, transparent 100%)',
-              }}
-            />
-            <img
-              src={heroLandingImg}
-              alt="Star Cool expert technician servicing appliances in Mumbai"
-              className="w-full h-full object-cover object-left-top"
-              loading="eager"
-              width="1200"
-              height="815"
-            />
+              className="relative w-full h-full"
+              style={{ clipPath: 'url(#hero-curve-clip-home)' }}
+            >
+              <img
+                src={heroLandingImg}
+                alt="Star Cool expert technician servicing appliances in Mumbai"
+                className="w-full h-full object-cover object-right-top"
+                loading="eager"
+                width="1200"
+                height="815"
+              />
+            </div>
+
+            {/* Orange curved edge stroke (6-8px non-scaling stroke) */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              preserveAspectRatio="none"
+              viewBox="0 0 100 100"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M 12 0 C 2 30, 0 60, 10 100"
+                stroke="#F97316"
+                strokeWidth="7"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
           </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            {/* Left Content Column (aligned with image in same viewport) */}
-            <div className="w-[58%] sm:w-[52%] lg:w-[52%] py-3 sm:py-6">
+            {/* Left Content Column: 55% on mobile, 50% on laptop */}
+            <div className="w-[55%] md:w-[50%] lg:w-[50%] py-2 sm:py-4 md:py-6">
               <h1 className="text-xl xs:text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-2 sm:mb-4">
                 Fast &amp; Reliable<br />
                 Appliance Repair<br />
@@ -136,8 +158,20 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Buttons Row with solid green WhatsApp and generous gap below */}
-            <div className="flex flex-row items-center gap-3 pt-2 pb-2 max-w-lg sm:max-w-xl">
+            {/* Mobile only: show hero image stacked under text */}
+            <div className="block sm:hidden w-full h-64 md:h-96 relative my-3 overflow-hidden rounded-xl">
+              <img
+                src={heroLandingImg}
+                alt="Star Cool expert technician servicing appliances in Mumbai"
+                className="w-full h-full object-cover object-center"
+                loading="eager"
+                width="1200"
+                height="815"
+              />
+            </div>
+
+            {/* Buttons Row: sits below photo & text on mobile, full width */}
+            <div className="flex flex-row items-center gap-3 pt-3 pb-2 w-full md:max-w-lg sm:max-w-xl">
               {/* Call Now Button (Orange) */}
               <a
                 href={`tel:${PHONE_TEL}`}
@@ -188,14 +222,14 @@ export default function Home() {
                 >
                   {/* Left: Real appliance image + Title */}
                   <div className="flex items-center gap-3.5 min-w-0">
-                    <div className="w-16 h-14 sm:w-20 sm:h-16 rounded-xl overflow-hidden flex-shrink-0 bg-gray-50 flex items-center justify-center p-1 border border-gray-100">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden flex-shrink-0 bg-transparent flex items-center justify-center p-1 border border-gray-100">
                       <img
                         src={service.image}
                         alt={service.alt}
                         className="w-full h-full object-contain group-hover:scale-105 transition-transform"
                         loading="lazy"
                         width="80"
-                        height="64"
+                        height="80"
                       />
                     </div>
                     <span className="text-sm sm:text-base font-bold text-[#0B1F3F] group-hover:text-orange-500 transition-colors leading-tight">

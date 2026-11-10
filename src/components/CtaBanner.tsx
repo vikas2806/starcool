@@ -16,21 +16,21 @@ export default function CtaBanner({ serviceTitle, ctaSubtext, whatsappMessage, c
 
   return (
     <section className="mx-4 my-8 lg:mx-8 rounded-2xl overflow-hidden bg-gray-100 shadow" aria-label="Call to action">
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-        {/* Image */}
-        <div className="hidden lg:block h-56">
+      <div className="flex flex-col lg:flex-row items-stretch">
+        {/* Image: fills left side 35-38% of card width on laptop edge to edge, mobile at top at fixed ratio */}
+        <div className="w-full lg:w-[36%] flex-shrink-0 aspect-[16/9] lg:aspect-auto min-h-[200px]">
           <img
             src={ctaImageSrc}
             alt={ctaImageAlt}
             className="w-full h-full object-cover"
             loading="lazy"
-            width="560"
-            height="224"
+            width="600"
+            height="400"
           />
         </div>
 
         {/* Text */}
-        <div className="p-8 lg:p-10">
+        <div className="p-6 sm:p-8 lg:p-10 flex-1 flex flex-col justify-center">
           <h2 className="text-2xl lg:text-3xl font-bold mb-2 leading-tight" style={{ color: '#0B1F3F' }}>
             Need {applianceName} Repair in Mumbai?
           </h2>
