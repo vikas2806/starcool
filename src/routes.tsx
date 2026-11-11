@@ -2,7 +2,7 @@ import type { RouteRecord } from 'vite-react-ssg';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Reviews from './pages/Reviews';
+
 import ServicePage from './pages/ServicePage';
 import NotFound from './pages/NotFound';
 
@@ -18,10 +18,6 @@ export const routes: RouteRecord[] = [
   {
     path: '/contact',
     element: <Contact />,
-  },
-  {
-    path: '/reviews',
-    element: <Reviews />,
   },
   {
     path: '/ac-repair-mumbai',

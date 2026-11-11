@@ -18,19 +18,20 @@ export default function Navbar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  // Close mobile menu on route change
+  // Close menus on route change
   useEffect(() => {
     setMenuOpen(false);
     setDropdownOpen(false);
   }, [location]);
 
+  // Add scroll shadow
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdown on outside click
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -42,27 +43,20 @@ export default function Navbar() {
   }, []);
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-    `text-sm font-medium transition-colors hover:text-orange-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded ${
-      isActive ? 'text-orange-400' : 'text-white'
-    }`;
+    `text-sm font-medium transition-colors hover:text-orange-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded ${isActive ? 'text-orange-400' : 'text-white'}`;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-shadow ${
-        scrolled ? 'shadow-lg' : ''
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-shadow ${scrolled ? 'shadow-lg' : ''}`}
       style={{ backgroundColor: '#0B1F3F' }}
     >
-      <nav
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20"
-        aria-label="Main navigation"
-      >
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20" aria-label="Main navigation">
         {/* Logo */}
         <Link to="/" aria-label="Star Cool Appliance Repairs - Home">
           <Logo />
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop navigation */}
         <div className="hidden lg:flex items-center gap-8">
           <NavLink to="/" end className={navLinkClass}>
             Home
@@ -71,8 +65,8 @@ export default function Navbar() {
           {/* Services dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button
-              onClick={() => setDropdownOpen((v) => !v)}
-              onKeyDown={(e) => e.key === 'Escape' && setDropdownOpen(false)}
+              onClick={() => setDropdownOpen(v => !v)}
+              onKeyDown={e => e.key === 'Escape' && setDropdownOpen(false)}
               className="flex items-center gap-1 text-sm font-medium text-white hover:text-orange-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded"
               aria-haspopup="true"
               aria-expanded={dropdownOpen}
@@ -81,7 +75,7 @@ export default function Navbar() {
             </button>
             {dropdownOpen && (
               <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-xl py-2 z-50">
-                {serviceLinks.map((link) => (
+                {serviceLinks.map(link => (
                   <Link
                     key={link.to}
                     to={link.to}
@@ -97,9 +91,6 @@ export default function Navbar() {
 
           <NavLink to="/about" className={navLinkClass}>
             About Us
-          </NavLink>
-          <NavLink to="/reviews" className={navLinkClass}>
-            Reviews
           </NavLink>
           <NavLink to="/contact" className={navLinkClass}>
             Contact
@@ -122,7 +113,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           className="lg:hidden text-white p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
-          onClick={() => setMenuOpen((v) => !v)}
+          onClick={() => setMenuOpen(v => !v)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
         >
@@ -137,16 +128,18 @@ export default function Navbar() {
             <NavLink to="/" end className={navLinkClass}>
               Home
             </NavLink>
+
+            {/* Services dropdown for mobile */}
             <div>
               <button
-                onClick={() => setDropdownOpen((v) => !v)}
+                onClick={() => setDropdownOpen(v => !v)}
                 className="flex items-center gap-1 text-sm font-medium text-white w-full"
               >
                 Services <ChevronDown size={16} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {dropdownOpen && (
                 <div className="mt-2 ml-4 flex flex-col gap-2">
-                  {serviceLinks.map((link) => (
+                  {serviceLinks.map(link => (
                     <NavLink key={link.to} to={link.to} className={navLinkClass}>
                       {link.label}
                     </NavLink>
@@ -154,15 +147,14 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+
             <NavLink to="/about" className={navLinkClass}>
               About Us
-            </NavLink>
-            <NavLink to="/reviews" className={navLinkClass}>
-              Reviews
             </NavLink>
             <NavLink to="/contact" className={navLinkClass}>
               Contact
             </NavLink>
+
             <a
               href={`tel:${PHONE_TEL}`}
               className="flex items-center justify-center gap-2 text-white font-semibold px-5 py-3 rounded-full text-sm min-h-[44px]"

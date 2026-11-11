@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+lighthouse-mobile.json
+lighthouse_ac.json
+lighthouse_home.json
+.env.production
+.env
+.env.*
+!.env.example

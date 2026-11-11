@@ -24,17 +24,7 @@ Production-ready, ultra-fast, mobile-first website for **Star Cool Appliance Rep
 
 ---
 
-## 📞 Changing Phone & WhatsApp Information
 
-All contact details are centralized in a single file:
-👉 [`src/config/contact.ts`](./src/config/contact.ts)
-
-```typescript
-export const PHONE_DISPLAY = '+91 77388 07317';
-export const WHATSAPP_NUMBER = '917738807317'; // Country code + digits, no plus or spaces
-export const PHONE_TEL = '+917738807317';
-export const SITE_URL = 'https://starcool.example'; // Update with purchased domain
-```
 
 ---
 
@@ -69,32 +59,7 @@ Reviews are configured in:
 }
 ```
 
----
 
-## 🖼 Replacing Images
-
-Images are stored in [`src/assets/images/`](./src/assets/images/). Simply replace the corresponding files with optimized photos while keeping the filenames:
-- Hero images: `hero-ac.jpg`, `hero-microwave.jpg`, `hero-washing-machine.jpg`, `hero-refrigerator.jpg`
-- Problem images: `problems-ac.jpg`, `problems-microwave.jpg`, `problems-washing-machine.jpg`, `problems-refrigerator.jpg`
-- CTA images: `cta-ac.jpg`, `cta-microwave.jpg`, `cta-washing-machine.jpg`, `cta-refrigerator.jpg`
-
----
-
-## 🌐 Connecting Your Domain
-
-1. Deploy the site repository to **Vercel** or **Netlify** (both configs provided: `vercel.json` and `netlify.toml`).
-2. Add your custom domain (e.g. `starcoolappliancerepairs.com`) in the hosting provider dashboard.
-3. Configure the DNS records at your registrar:
-   - For Apex domain (`@`): A Record pointing to the provider IP.
-   - For Subdomain (`www`): CNAME pointing to your project alias.
-4. SSL certificate will automatically be provisioned via Let's Encrypt.
-5. In [`src/config/contact.ts`](./src/config/contact.ts), update `SITE_URL`:
-   ```typescript
-   export const SITE_URL = 'https://yourdomain.com';
-   ```
-6. Update [`public/robots.txt`](./public/robots.txt) and [`public/sitemap.xml`](./public/sitemap.xml) with the production domain.
-
----
 
 ## 💻 Local Development & Build
 

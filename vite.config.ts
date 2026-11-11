@@ -18,7 +18,7 @@ export default defineConfig({
         '/washing-machine-repair-mumbai',
         '/microwave-repair-mumbai',
         '/about',
-        '/reviews',
+        // '/reviews', // removed Reviews page
         '/contact',
         '/404',
       ];
