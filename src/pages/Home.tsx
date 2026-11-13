@@ -99,7 +99,7 @@ export default function Home() {
         >
           {/* Right Technician Photo Block with SVG clip-path and 7px orange stroke */}
           {/* On mobile: upper-right 45% width, bleeding to top & right. On laptop: right 48-50% width, full height */}
-          <div className="max-[339px]:hidden absolute right-0 top-0 h-[260px] xs:h-[290px] sm:h-[340px] md:h-full md:bottom-0 w-[45%] md:w-[48%] lg:w-[50%] pointer-events-none overflow-hidden flex items-stretch justify-end">
+          <div className="hidden md:block absolute right-0 top-0 h-[260px] xs:h-[290px] sm:h-[340px] md:h-full md:bottom-0 w-[45%] md:w-[48%] lg:w-[50%] pointer-events-none overflow-hidden flex items-stretch justify-end">
             <svg className="absolute inset-0 w-0 h-0" aria-hidden="true">
               <defs>
                 <clipPath id="hero-curve-clip-home" clipPathUnits="objectBoundingBox">
@@ -139,9 +139,9 @@ export default function Home() {
             </svg>
           </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-full mx-0 px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Left Content Column: 55% on mobile, 50% on laptop */}
-            <div className="w-[55%] md:w-[50%] lg:w-[50%] py-2 sm:py-4 md:py-6">
+            <div className="w-full md:w-[50%] lg:w-[50%] py-2 sm:py-4 md:py-6">
               <h1 className="text-xl xs:text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-2 sm:mb-4">
                 Fast &amp; Reliable<br />
                 Appliance Repair<br />

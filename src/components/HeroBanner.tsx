@@ -28,11 +28,11 @@ export default function HeroBanner({
 }: HeroBannerProps) {
   return (
     <section
-      className="relative overflow-hidden pt-20 sm:pt-24 pb-8 sm:pb-12 bg-[#0B1F3F]"
+      className="relative overflow-hidden overflow-x-hidden pt-20 sm:pt-24 pb-8 sm:pb-12 bg-[#0B1F3F]"
       aria-label="Hero section"
     >
-      {/* Right Technician Photo Block */}
-      <div className="hidden sm:block absolute right-0 top-0 h-[260px] xs:h-[290px] sm:h-[340px] md:h-full md:bottom-0 w-[45%] md:w-[48%] lg:w-[50%] pointer-events-none overflow-hidden flex items-stretch justify-end">
+      {/* Right Technician Photo Block – visible only on md and up */}
+      <div className="hidden md:block absolute right-0 top-0 h-[260px] xs:h-[290px] sm:h-[340px] md:h-full md:bottom-0 w-[45%] md:w-[48%] lg:w-[50%] pointer-events-none overflow-hidden flex items-stretch justify-end">
         <svg className="absolute inset-0 w-0 h-0" aria-hidden="true">
           <defs>
             <clipPath id="hero-curve-clip-service" clipPathUnits="objectBoundingBox">
@@ -48,7 +48,7 @@ export default function HeroBanner({
             height={heroImageHeight}
             alt={heroImageAlt}
             className="w-full h-full object-cover object-right-top"
-            fetchPriority="high"
+            loading="lazy"
             decoding="async"
           />
         </div>
@@ -64,9 +64,9 @@ export default function HeroBanner({
         </svg>
       </div>
 
-      {/* Text column */}
+      {/* Text column – full width on mobile */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="w-[55%] md:w-[50%] lg:w-[50%] py-2 sm:py-4 md:py-6">
+        <div className="w-full md:w-[50%] lg:w-[50%] py-2 sm:py-4 md:py-6">
           {/* Badge */}
           <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-[11px] sm:text-xs font-medium px-3 py-1 rounded-full mb-2 sm:mb-3">
             <CheckCircle2 size={14} style={{ color: '#F97316' }} />
@@ -91,7 +91,7 @@ export default function HeroBanner({
             height={heroImageHeight}
             alt={heroImageAlt}
             className="w-full h-full object-cover object-center"
-            fetchPriority="high"
+            loading="lazy"
             decoding="async"
           />
         </div>
